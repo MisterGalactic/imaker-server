@@ -1,0 +1,18 @@
+{
+  "development": {
+    "database": "apollo_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "protocol": "postgres",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "use_env_variable": "DATABASE_URL"
+  }
+}
