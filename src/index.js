@@ -21,6 +21,7 @@ server.start().then(() => {
   httpServer.listen({ port: PORT }, () => {
     // eslint-disable-next-line
     console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
+    // eslint-disable-next-line
     console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${server.graphqlPath}`)
   })
 }).catch((err) => {

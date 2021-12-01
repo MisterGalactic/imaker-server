@@ -50,7 +50,8 @@ const startApolloServer = (httpServer) => {
         me,
         secret: process.env.SECRET
       }
-    }
+    },
+    introspection: true
   })
 
   return server
