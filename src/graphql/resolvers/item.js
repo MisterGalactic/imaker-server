@@ -79,6 +79,7 @@ exports.delete_item_by_id = async (_, { ItemId }, { models }) => {
 exports.place_a_bid = async (_, { ItemId, biddingPrice }, { models, me }) => {
   try {
     const itemDB = await models.Item.findOne({ where: { id: ItemId } })
+    if (!itemDB) throw new Error('Item Not Found')
     if (Date.parse(itemDB.auctionEnd) < Date.now()) throw new Error('Bidding time is over!')
     if (biddingPrice <= itemDB.minimumBid) throw new Error('Bidding amount is less than minimum bid')
 

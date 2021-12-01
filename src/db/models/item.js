@@ -75,8 +75,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
-    hooks: async (instance) => {
-      instance.id = uuidv4()
+    hooks: {
+      beforeCreate: async (instance) => {
+        instance.id = uuidv4()
+      }
     },
     sequelize,
     modelName: 'Item'
