@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
+    "herokuStart": "node sequelize-init.js && npx sequelize-mig migration:undo --statp ./src/db/states && npx sequelize-mig migration:make --statp ./src/db/states && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "cleanStart": "node sequelize-init.js && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-mig migration:undo --statp ./src/db/states && npx sequelize-mig migration:make --statp ./src/db/states && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "author": "",
