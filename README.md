@@ -13,3 +13,7 @@
 - Run `$ heroku addons:create heroku-postgresql:hobby-dev` (this adds a postgresql)
 - Run `$ heroku config:set SECRET=SOME_SECRET`
 - Run `$ heroku run npm run herokuInit`
+
+heroku dyno:restart 
+
+heroku logs -t

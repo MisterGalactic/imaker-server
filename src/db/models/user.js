@@ -49,10 +49,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     firstName: {
-      type: DataTypes.TEXT
+      type: DataTypes.STRING
     },
     lastName: {
-      type: DataTypes.TEXT
+      type: DataTypes.STRING
     },
     phoneNumber: {
       type: DataTypes.STRING(25),
