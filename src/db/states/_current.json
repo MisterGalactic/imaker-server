@@ -111,6 +111,10 @@
                     "field": "picUrl3",
                     "seqType": "Sequelize.TEXT"
                 },
+                "auctionStart": {
+                    "field": "auctionStart",
+                    "seqType": "Sequelize.DATE"
+                },
                 "auctionEnd": {
                     "field": "auctionEnd",
                     "seqType": "Sequelize.DATE"

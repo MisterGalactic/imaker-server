@@ -36,6 +36,9 @@ module.exports = (sequelize, DataTypes) => {
     picUrl3: {
       type: DataTypes.TEXT
     },
+    auctionStart: {
+      type: DataTypes.DATE
+    },
     auctionEnd: {
       type: DataTypes.DATE
     },

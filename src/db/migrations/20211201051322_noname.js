@@ -117,6 +117,7 @@ const migrationCommands = (transaction) => [
         picUrl1: { type: Sequelize.TEXT, field: "picUrl1" },
         picUrl2: { type: Sequelize.TEXT, field: "picUrl2" },
         picUrl3: { type: Sequelize.TEXT, field: "picUrl3" },
+        auctionStart: { type: Sequelize.DATE, field: "auctionStart" },
         auctionEnd: { type: Sequelize.DATE, field: "auctionEnd" },
         minPrice: { type: Sequelize.INTEGER, field: "minPrice", default: 0 },
         minimumBid: {

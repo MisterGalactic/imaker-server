@@ -7,6 +7,7 @@ module.exports = `
     picUrl1: String
     picUrl2: String
     picUrl3: String
+    auctionStart: String!
     auctionEnd: String!
     minimumBid: Int
     bidder: ID
@@ -21,6 +22,7 @@ module.exports = `
     picUrl1: String
     picUrl2: String
     picUrl3: String
+    auctionStart: String
     auctionEnd: String
     CategoryId: ID
   }

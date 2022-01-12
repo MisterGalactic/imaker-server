@@ -40,6 +40,7 @@ const items = [...Array(numItems)].map(() => ({
   picUrl3: faker.image.image(),
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[randNumb(10)].id,
+  auctionStart: faker.date.recent(),
   auctionEnd: faker.date.soon(),
   minimumBid: parseInt(faker.commerce.price(), 10),
   bidder: null,
