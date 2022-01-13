@@ -190,11 +190,11 @@
                 },
                 "firstName": {
                     "field": "firstName",
-                    "seqType": "Sequelize.TEXT"
+                    "seqType": "Sequelize.STRING"
                 },
                 "lastName": {
                     "field": "lastName",
-                    "seqType": "Sequelize.TEXT"
+                    "seqType": "Sequelize.STRING"
                 },
                 "phoneNumber": {
                     "field": "phoneNumber",
@@ -214,8 +214,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/Denis/codes/hobby/apollo-test/src/db/states/_current.json",
-    "backupPath": "/Users/Denis/codes/hobby/apollo-test/src/db/states/_current_bak.json",
+    "path": "/Users/javadoge/imaker-server/src/db/states/_current.json",
+    "backupPath": "/Users/javadoge/imaker-server/src/db/states/_current_bak.json",
     "exists": false,
     "revision": 1
 }

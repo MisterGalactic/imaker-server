@@ -42,6 +42,7 @@ exports.create_item = async (_, { item }, { models, me }) => {
     const createdItem = await models.Item.create({
       ...item,
       minimumBid: item.minPrice + 1,
+      auctionStart: Date.parse(item.auctionStart),
       auctionEnd: Date.parse(item.auctionEnd),
       UserId: me.id
     })
