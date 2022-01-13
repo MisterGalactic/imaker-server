@@ -1,5 +1,6 @@
 /node_modules
 
+.envHide
 .env
 .env.local
 .env.development.local
