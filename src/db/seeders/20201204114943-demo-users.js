@@ -6,21 +6,21 @@ const password = bcrypt.hashSync('pass', 10)
 const randNumb = (max) => Math.floor(Math.random() * max)
 
 const categories = [
-  { id: faker.datatype.uuid(), name: 'FURNITURE', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'ANIMALS', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'PLANTS', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'KITCHEN', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'CARS', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'CLOTHES', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'FOOD', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'BEAUTY', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'BABY', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'ELECTRONICS', createdAt: new Date(), updatedAt: new Date() },
-  { id: faker.datatype.uuid(), name: 'SPORTS', createdAt: new Date(), updatedAt: new Date() }
+  { id: faker.random.uuid(), name: 'FURNITURE', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'ANIMALS', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'PLANTS', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'KITCHEN', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'CARS', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'CLOTHES', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'FOOD', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'BEAUTY', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'BABY', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'ELECTRONICS', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'SPORTS', createdAt: new Date(), updatedAt: new Date() }
 ]
 
 const users = [...Array(numItems)].map(() => ({
-  id: faker.datatype.uuid(),
+  id: faker.random.uuid(),
   email: faker.internet.email(),
   password,
   firstName: faker.name.firstName(),
@@ -31,7 +31,7 @@ const users = [...Array(numItems)].map(() => ({
 }))
 
 const items = [...Array(numItems)].map(() => ({
-  id: faker.datatype.uuid(),
+  id: faker.random.uuid(),
   name: faker.commerce.productName(),
   minPrice: parseInt(faker.commerce.price(), 10),
   description: faker.commerce.productDescription(),
@@ -49,7 +49,7 @@ const items = [...Array(numItems)].map(() => ({
 }))
 
 const addresses = [...Array(numItems)].map((address, index) => ({
-  id: faker.datatype.uuid(),
+  id: faker.random.uuid(),
   firstLineAddress: faker.address.streetAddress(),
   secondLineAddress: faker.address.secondaryAddress(),
   city: faker.address.city(),
