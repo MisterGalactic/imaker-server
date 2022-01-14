@@ -2,8 +2,10 @@ module.exports = `
   type Item {
     id: String!
     name: String!
-    minPrice: Int!
+    subname: String
+    color: String
     description: String
+    minPrice: Int!
     picUrl1: String
     picUrl2: String
     picUrl3: String
@@ -17,8 +19,10 @@ module.exports = `
 
   input ItemUpdate {
     name: String!
-    minPrice: Int!
+    subname: String
+    color: String
     description: String
+    minPrice: Int!
     picUrl1: String
     picUrl2: String
     picUrl3: String

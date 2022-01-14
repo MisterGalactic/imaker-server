@@ -13,7 +13,7 @@ const Sequelize = require("sequelize");
 const info = {
   revision: 1,
   name: "noname",
-  created: "2022-01-13T10:41:50.732Z",
+  created: "2022-01-14T11:45:08.949Z",
   comment: "",
 };
 
@@ -113,6 +113,8 @@ const migrationCommands = (transaction) => [
       {
         id: { type: Sequelize.UUID, field: "id", primaryKey: true },
         name: { type: Sequelize.STRING, field: "name", allowNull: false },
+        subname: { type: Sequelize.STRING, field: "subname" },
+        color: { type: Sequelize.STRING, field: "color" },
         description: { type: Sequelize.TEXT, field: "description" },
         picUrl1: { type: Sequelize.TEXT, field: "picUrl1" },
         picUrl2: { type: Sequelize.TEXT, field: "picUrl2" },

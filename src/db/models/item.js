@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    subname: {
+      type: DataTypes.STRING
+    },
+    color: {
+      type: DataTypes.STRING
+    },
     description: {
       type: DataTypes.TEXT
     },

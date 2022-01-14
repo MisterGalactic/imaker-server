@@ -95,6 +95,14 @@
                     "field": "name",
                     "seqType": "Sequelize.STRING"
                 },
+                "subname": {
+                    "field": "subname",
+                    "seqType": "Sequelize.STRING"
+                },
+                "color": {
+                    "field": "color",
+                    "seqType": "Sequelize.STRING"
+                },
                 "description": {
                     "field": "description",
                     "seqType": "Sequelize.TEXT"
