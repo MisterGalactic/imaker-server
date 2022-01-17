@@ -3,8 +3,8 @@
 module.exports = `
   type User {
     id: ID!
-    firstName: String!
-    lastName: String!
+    firstName: String
+    lastName: String
     password: String!
     email: String!
     phoneNumber: String
@@ -17,8 +17,8 @@ module.exports = `
   }
 
   input UserUpdate {
-    firstName: String!
-    lastName: String!
+    firstName: String
+    lastName: String
     password: String!
     email: String!
     phoneNumber: String
