@@ -7,7 +7,7 @@
     "start": "nodemon src/index.js",
     "herokuInit": "node sequelize-init.js && npx sequelize-mig migration:undo --statp ./src/db/states && npx sequelize-mig migration:make --statp ./src/db/states && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "localInit": "node sequelize-init.js && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-mig migration:undo --statp ./src/db/states && npx sequelize-mig migration:make --statp ./src/db/states && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "nuke": "node sequelize-init.js && npx sequelize-cli db:drop"
+    "nuke": "node sequelize-init.js && npx sequelize-mig migration:undo --statp ./src/db/states && npx sequelize-mig migration:make --statp ./src/db/states && npx sequelize-cli db:migrate"
   },
   "author": "",
   "license": "ISC",
