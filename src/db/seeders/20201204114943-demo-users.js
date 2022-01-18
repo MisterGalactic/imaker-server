@@ -33,6 +33,7 @@ const categories = [
   { id: faker.random.uuid(), name: 'REAL ESTATE', createdAt: new Date(), updatedAt: new Date() },
   { id: faker.random.uuid(), name: 'WATCH', createdAt: new Date(), updatedAt: new Date() },
   { id: faker.random.uuid(), name: 'CARS', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'UNSORTED', createdAt: new Date(), updatedAt: new Date() }
 ]
 
 const seasons = [
