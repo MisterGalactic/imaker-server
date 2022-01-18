@@ -62,7 +62,7 @@ const items = [...Array(numItems + 1)].map((item, index) => (
     picUrl1: faker.image.image(),
     picUrl2: faker.image.image(),
     picUrl3: faker.image.image(),
-    userId: users[randNumb(numItems + 1)].id,
+    UserId: users[randNumb(numItems + 1)].id,
     categoryId: categories[randNumb(10)].id,
     auctionEnd: faker.date.soon(),
     minimumBid: parseInt(faker.commerce.price(), 10),
@@ -80,7 +80,7 @@ const addresses = [...Array(numItems + 1)].map((address, index) => (
     city: faker.address.city(),
     postcode: `${faker.address.zipCode()}`,
     country: faker.address.country(),
-    userId: users[index].id,
+    UserId: users[index].id,
     createdAt: new Date(),
     updatedAt: new Date()
   }
