@@ -12,7 +12,7 @@ const numItems = 15;
 
 let pass = bcrypt.hashSync('pass', saltRounds);
 
-const users = [...Array(numItems)].map((user) => (
+const users = [...Array(numItems)].map(() => (
   {
     id: faker.random.uuid(),
     email: faker.internet.email(),
@@ -63,7 +63,7 @@ const items = [...Array(numItems + 1)].map((item, index) => (
     picUrl2: faker.image.image(),
     picUrl3: faker.image.image(),
     UserId: users[randNumb(numItems + 1)].id,
-    categoryId: categories[randNumb(10)].id,
+    CategoryId: categories[randNumb(10)].id,
     auctionEnd: faker.date.soon(),
     minimumBid: parseInt(faker.commerce.price(), 10),
     bidder: null,
