@@ -90,18 +90,18 @@ module.exports = {
 
   up: async (queryInterface) => {
     Promise.all([
-      await queryInterface.bulkInsert('users', users, {}),
-      await queryInterface.bulkInsert('categories', categories, {}),
-      await queryInterface.bulkInsert('items', items, {}),
-      await queryInterface.bulkInsert('addresses', addresses, {})
+      await queryInterface.bulkInsert('Users', users, {}),
+      await queryInterface.bulkInsert('Categories', categories, {}),
+      await queryInterface.bulkInsert('Items', items, {}),
+      await queryInterface.bulkInsert('Addresses', addresses, {})
     ]);
   },
   down: async (queryInterface) => {
     Promise.all([
-      await queryInterface.bulkDelete('users', users, {}),
-      await queryInterface.bulkDelete('categories', categories, {}),
-      await queryInterface.bulkDelete('items', items, {}),
-      await queryInterface.bulkDelete('addresses', addresses, {})
+      await queryInterface.bulkDelete('Users', users, {}),
+      await queryInterface.bulkDelete('Categories', categories, {}),
+      await queryInterface.bulkDelete('Items', items, {}),
+      await queryInterface.bulkDelete('Addresses', addresses, {})
     ]);
   }
 };
