@@ -36,6 +36,12 @@ const categories = [
   { id: faker.random.uuid(), name: 'UNSORTED', createdAt: new Date(), updatedAt: new Date() }
 ]
 
+const postcategories = [
+  { id: faker.random.uuid(), name: 'FEATURED', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'COINS', createdAt: new Date(), updatedAt: new Date() },
+  { id: faker.random.uuid(), name: 'ART', createdAt: new Date(), updatedAt: new Date() }
+]
+
 const seasons = [
   { name: 'Spring' },
   { name: 'Summer' },
@@ -122,6 +128,26 @@ const testUser = [...Array(1)].map(() => ({
   updatedAt: new Date()
 }))
 
+const posts = [...Array(numFeaturedItems)].map(() => ({
+  id: faker.random.uuid(),
+  name: `${getRandomInt(1990,2022)} ${faker.vehicle.model()} ${getRandomInt(29,44)}mm`,
+  subname: faker.name.lastName(),
+  color: random_hex_color_code(),
+  minPrice: parseInt(faker.commerce.price(), 10),
+  description: faker.commerce.productDescription(),
+  picUrl1: 'http://loremflickr.com/640/480/watches',
+  picUrl2: 'http://loremflickr.com/640/481/watches',
+  picUrl3: 'http://loremflickr.com/640/482/watches',
+  UserId: users[randNumb(numItems)].id,
+  PostCategoryId: postcategories[randNumb(3)].id,
+  auctionStart: fakerStartTime[randNumb(18)].time,
+  auctionEnd: fakerEndTime[randNumb(10)].time,
+  minimumBid: parseInt(faker.commerce.price(), 10),
+  bidder: null,
+  createdAt: new Date(),
+  updatedAt: new Date()
+}))
+
 const featuredItems = [...Array(numFeaturedItems)].map(() => ({
   id: faker.random.uuid(),
   name: `${getRandomInt(1990,2022)} ${faker.vehicle.model()} ${getRandomInt(29,44)}mm`,
@@ -132,7 +158,7 @@ const featuredItems = [...Array(numFeaturedItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/watches',
   picUrl2: 'http://loremflickr.com/640/481/watches',
   picUrl3: 'http://loremflickr.com/640/482/watches',
-  UserId: users[randNumb(numWatchItems)].id,
+  UserId: users[randNumb(numItems)].id,
   CategoryId: categories[0].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
   auctionEnd: fakerEndTime[randNumb(10)].time,
@@ -152,7 +178,7 @@ const coinItems = [...Array(numCoinItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/coins',
   picUrl2: 'http://loremflickr.com/640/481/coins',
   picUrl3: 'http://loremflickr.com/640/482/coins',
-  UserId: users[randNumb(numCoinItems)].id,
+  UserId: users[randNumb(numItems)].id,
   CategoryId: categories[1].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
   auctionEnd: fakerEndTime[randNumb(10)].time,
@@ -172,7 +198,7 @@ const artItems = [...Array(numArtItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/art',
   picUrl2: 'http://loremflickr.com/640/481/art',
   picUrl3: 'http://loremflickr.com/640/482/art',
-  UserId: users[randNumb(numArtItems)].id,
+  UserId: users[randNumb(numItems)].id,
   CategoryId: categories[2].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
   auctionEnd: fakerEndTime[randNumb(10)].time,
@@ -192,7 +218,7 @@ const brandItems = [...Array(numBrandItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/model',
   picUrl2: 'http://loremflickr.com/640/481/model',
   picUrl3: 'http://loremflickr.com/640/482/model',
-  UserId: users[randNumb(numBrandItems)].id,
+  UserId: users[randNumb(numItems)].id,
   CategoryId: categories[3].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
   auctionEnd: fakerEndTime[randNumb(10)].time,
@@ -212,7 +238,7 @@ const realEstateItems = [...Array(numRealEstateItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/482/mansion',
   picUrl2: 'http://placeimg.com/640/480/arch',
   picUrl3: 'http://loremflickr.com/640/482/house',
-  UserId: users[randNumb(numRealEstateItems)].id,
+  UserId: users[randNumb(numItems)].id,
   CategoryId: categories[4].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
   auctionEnd: fakerEndTime[randNumb(10)].time,
@@ -232,7 +258,7 @@ const watchItems = [...Array(numWatchItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/watches',
   picUrl2: 'http://loremflickr.com/640/481/watches',
   picUrl3: 'http://loremflickr.com/640/482/watches',
-  UserId: users[randNumb(numWatchItems)].id,
+  UserId: users[randNumb(numItems)].id,
   CategoryId: categories[5].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
   auctionEnd: fakerEndTime[randNumb(10)].time,
@@ -252,7 +278,7 @@ const carItems = [...Array(numCarItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/cars',
   picUrl2: 'http://loremflickr.com/640/481/cars',
   picUrl3: 'http://loremflickr.com/640/482/cars',
-  UserId: users[randNumb(numCarItems)].id,
+  UserId: users[randNumb(numItems)].id,
   CategoryId: categories[6].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
   auctionEnd: fakerEndTime[randNumb(10)].time,
@@ -279,6 +305,8 @@ module.exports = {
     await queryInterface.bulkInsert('Users', users, {}),
     await queryInterface.bulkInsert('Users', testUser, {}),
     await queryInterface.bulkInsert('Categories', categories, {}),
+    await queryInterface.bulkInsert('PostCategories', postcategories, {}),
+    await queryInterface.bulkInsert('Posts', posts, {}),
     await queryInterface.bulkInsert('Items', featuredItems, {}),
     await queryInterface.bulkInsert('Items', coinItems, {}),
     await queryInterface.bulkInsert('Items', artItems, {}),
@@ -292,6 +320,8 @@ module.exports = {
     await queryInterface.bulkDelete('Users', users, {}),
     await queryInterface.bulkDelete('Users', testUser, {}),
     await queryInterface.bulkDelete('Categories', categories, {}),
+    await queryInterface.bulkDelete('PostCategories', postcategories, {}),
+    await queryInterface.bulkDelete('Posts', posts, {}),
     await queryInterface.bulkDelete('Items', featuredItems, {}),
     await queryInterface.bulkDelete('Items', coinItems, {}),
     await queryInterface.bulkDelete('Items', artItems, {}),

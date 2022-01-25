@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       User.Items = this.hasMany(models.Item, { onDelete: 'CASCADE' })
+      User.Posts = this.hasMany(models.Post, { onDelete: 'CASCADE' })
       User.Address = this.hasOne(models.Address, { onDelete: 'CASCADE' })
     }
 

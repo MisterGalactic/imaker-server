@@ -15,6 +15,18 @@ module.exports.isItemOwner = async (_, { ItemId }, { models, me }) => {
   }
 }
 
+module.exports.isPostOwner = async (_, { PostId }, { models, me }) => {
+  try {
+    const post = await models.Post.findByPk(PostId, { raw: true })
+    if (!post) throw new Error('Couldn\'t find Post')
+    if (post.UserId !== me.id) throw new ForbiddenError('Not Authorized. User not the owner of this resource.')
+
+    return skip
+  } catch (err) {
+    return err
+  }
+}
+
 module.exports.isAddressOwner = async (_, { AddressId }, { models, me }) => {
   try {
     const address = await models.Address.findByPk(AddressId, { raw: true })
