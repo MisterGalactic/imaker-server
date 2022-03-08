@@ -119,6 +119,10 @@
                     "field": "picUrl3",
                     "seqType": "Sequelize.TEXT"
                 },
+                "history": {
+                    "field": "history",
+                    "seqType": "Sequelize.JSON"
+                },
                 "auctionStart": {
                     "field": "auctionStart",
                     "seqType": "Sequelize.DATE"
@@ -317,6 +321,11 @@
                     "field": "password",
                     "seqType": "Sequelize.TEXT"
                 },
+                "credit": {
+                    "default": 0,
+                    "field": "credit",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "firstName": {
                     "field": "firstName",
                     "seqType": "Sequelize.STRING"
@@ -343,8 +352,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/javadoge/imaker-server0-0-3/src/db/states/_current.json",
-    "backupPath": "/Users/javadoge/imaker-server0-0-3/src/db/states/_current_bak.json",
+    "path": "/Users/javadoge/centralWin/imaker-server0-0-5/src/db/states/_current.json",
+    "backupPath": "/Users/javadoge/centralWin/imaker-server0-0-5/src/db/states/_current_bak.json",
     "exists": false,
     "revision": 1
 }

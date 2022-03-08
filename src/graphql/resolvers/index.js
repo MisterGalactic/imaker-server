@@ -62,7 +62,8 @@ const resolvers = {
     sign_up: user.sign_up,
     sign_in: user.sign_in,
 
-    update_user: combineResolvers(isAuthenticated, user.update_user)
+    update_user: combineResolvers(isAuthenticated, user.update_user),
+    buy_credit: combineResolvers(isAuthenticated, user.buy_credit)
   },
   Subscription: {
     bidPlaced: {

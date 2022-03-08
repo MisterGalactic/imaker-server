@@ -6,6 +6,7 @@ module.exports = `
     firstName: String
     lastName: String
     password: String!
+    credit: Int
     email: String!
     phoneNumber: String
     item: [Item!]
@@ -32,5 +33,6 @@ module.exports = `
     sign_up(user: UserUpdate!): Token!
     sign_in(email: String!, password: String!): Token!
     update_user(user: UserUpdate!): User!
+    buy_credit(UserId: ID!, credit: Int): User
   }
 `

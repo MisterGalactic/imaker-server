@@ -115,6 +115,7 @@ const users = [...Array(numItems)].map(() => ({
   id: faker.random.uuid(),
   email: faker.internet.email(),
   password,
+  credit: parseInt(faker.commerce.price(), 10),
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),
   phoneNumber: `${faker.phone.phoneNumber()}`,
@@ -122,12 +123,16 @@ const users = [...Array(numItems)].map(() => ({
   updatedAt: new Date()
 }))
 
+// const history = `[{"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(25, 50)}"}, {"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(50, 100)}"}, {"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(100, 200)}"}]`
+const history = `[]`
+
 const testUser1 = [...Array(1)].map(() => ({
   id: faker.random.uuid(),
   email: '1',
   password,
-  firstName: '1',
-  lastName: 'Test User',
+  credit: parseInt(faker.commerce.price(), 10),
+  firstName: '',
+  lastName: 'TestUser1',
   phoneNumber: `${faker.phone.phoneNumber()}`,
   createdAt: new Date(),
   updatedAt: new Date()
@@ -137,8 +142,9 @@ const testUser2 = [...Array(1)].map(() => ({
   id: faker.random.uuid(),
   email: '2',
   password,
-  firstName: '2',
-  lastName: 'Test User',
+  credit: parseInt(faker.commerce.price(), 10),
+  firstName: '',
+  lastName: 'TestUser2',
   phoneNumber: `${faker.phone.phoneNumber()}`,
   createdAt: new Date(),
   updatedAt: new Date()
@@ -148,8 +154,9 @@ const testUser3 = [...Array(1)].map(() => ({
   id: faker.random.uuid(),
   email: '3',
   password,
-  firstName: '3',
-  lastName: 'Test User',
+  credit: parseInt(faker.commerce.price(), 10),
+  firstName: '',
+  lastName: 'TestUser3',
   phoneNumber: `${faker.phone.phoneNumber()}`,
   createdAt: new Date(),
   updatedAt: new Date()
@@ -308,6 +315,7 @@ const featuredItems = [...Array(numFeaturedItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/watches',
   picUrl2: 'http://loremflickr.com/640/481/watches',
   picUrl3: 'http://loremflickr.com/640/482/watches',
+  history: history,
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[0].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
@@ -328,6 +336,7 @@ const coinItems = [...Array(numCoinItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/coins',
   picUrl2: 'http://loremflickr.com/640/481/coins',
   picUrl3: 'http://loremflickr.com/640/482/coins',
+  history: history,
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[1].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
@@ -348,6 +357,7 @@ const artItems = [...Array(numArtItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/art',
   picUrl2: 'http://loremflickr.com/640/481/art',
   picUrl3: 'http://loremflickr.com/640/482/art',
+  history: history,
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[2].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
@@ -368,6 +378,7 @@ const brandItems = [...Array(numBrandItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/clothes',
   picUrl2: 'http://loremflickr.com/640/481/clothes',
   picUrl3: 'http://loremflickr.com/640/482/clothes',
+  history: history,
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[3].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
@@ -388,6 +399,7 @@ const realEstateItems = [...Array(numRealEstateItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/482/mansion',
   picUrl2: 'http://placeimg.com/640/480/arch',
   picUrl3: 'http://loremflickr.com/640/482/house',
+  history: history,
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[4].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
@@ -408,6 +420,7 @@ const watchItems = [...Array(numWatchItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/watches',
   picUrl2: 'http://loremflickr.com/640/481/watches',
   picUrl3: 'http://loremflickr.com/640/482/watches',
+  history: history,
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[5].id,
   auctionStart: fakerStartTime[randNumb(18)].time,
@@ -428,6 +441,7 @@ const carItems = [...Array(numCarItems)].map(() => ({
   picUrl1: 'http://loremflickr.com/640/480/cars',
   picUrl2: 'http://loremflickr.com/640/481/cars',
   picUrl3: 'http://loremflickr.com/640/482/cars',
+  history: history,
   UserId: users[randNumb(numItems)].id,
   CategoryId: categories[6].id,
   auctionStart: fakerStartTime[randNumb(18)].time,

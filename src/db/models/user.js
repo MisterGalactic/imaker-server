@@ -49,6 +49,13 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
+    credit: {
+      type: DataTypes.INTEGER,
+      default: 0,
+      validate: {
+        isDecimal: true
+      }
+    },
     firstName: {
       type: DataTypes.STRING
     },

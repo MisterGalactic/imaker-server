@@ -1,4 +1,8 @@
+const { gql } = require('apollo-server')
+
 module.exports = `
+  scalar JSON
+
   type Item {
     id: String!
     name: String!
@@ -9,6 +13,7 @@ module.exports = `
     picUrl1: String
     picUrl2: String
     picUrl3: String
+    history: JSON
     auctionStart: String!
     auctionEnd: String!
     minimumBid: Int
@@ -26,6 +31,7 @@ module.exports = `
     picUrl1: String
     picUrl2: String
     picUrl3: String
+    history: JSON
     auctionStart: String
     auctionEnd: String
     CategoryId: ID
@@ -41,6 +47,6 @@ module.exports = `
     create_item(item: ItemUpdate!): Item!
     delete_item_by_id(ItemId: ID!): Boolean!
     update_item(ItemId: ID!, item: ItemUpdate!): Item!
-    place_a_bid(ItemId: ID!, biddingPrice: Int): Item
+    place_a_bid(ItemId: ID!, biddingPrice: Int, lastName: String, history: JSON): Item
   }
 `

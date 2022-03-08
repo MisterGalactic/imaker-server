@@ -77,7 +77,7 @@ exports.delete_item_by_id = async (_, { ItemId }, { models }) => {
   }
 }
 
-exports.place_a_bid = async (_, { ItemId, biddingPrice }, { models, me }) => {
+exports.place_a_bid = async (_, { ItemId, biddingPrice, lastName, history }, { models, me }) => {
   try {
     const itemDB = await models.Item.findOne({ where: { id: ItemId } })
     if (!itemDB) throw new Error('Item Not Found')
@@ -86,6 +86,8 @@ exports.place_a_bid = async (_, { ItemId, biddingPrice }, { models, me }) => {
 
     itemDB.minimumBid = biddingPrice
     itemDB.bidder = me.id
+    // itemDB.history = history
+    itemDB.history = [...itemDB.history,{'name':`${lastName}`,'amount':`${biddingPrice}`}]
     await itemDB.save()
 
     pubsub.publish('bidPlaced', { bidPlaced: itemDB })

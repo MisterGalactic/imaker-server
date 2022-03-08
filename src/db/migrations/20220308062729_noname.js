@@ -15,7 +15,7 @@ const Sequelize = require("sequelize");
 const info = {
   revision: 1,
   name: "noname",
-  created: "2022-02-07T07:46:06.954Z",
+  created: "2022-03-08T06:27:29.497Z",
   comment: "",
 };
 
@@ -75,6 +75,7 @@ const migrationCommands = (transaction) => [
           allowNull: false,
         },
         password: { type: Sequelize.TEXT, field: "password", allowNull: false },
+        credit: { type: Sequelize.INTEGER, field: "credit", default: 0 },
         firstName: { type: Sequelize.STRING, field: "firstName" },
         lastName: { type: Sequelize.STRING, field: "lastName" },
         phoneNumber: { type: Sequelize.STRING(25), field: "phoneNumber" },
@@ -142,6 +143,7 @@ const migrationCommands = (transaction) => [
         picUrl1: { type: Sequelize.TEXT, field: "picUrl1" },
         picUrl2: { type: Sequelize.TEXT, field: "picUrl2" },
         picUrl3: { type: Sequelize.TEXT, field: "picUrl3" },
+        history: { type: Sequelize.JSON, field: "history" },
         auctionStart: { type: Sequelize.DATE, field: "auctionStart" },
         auctionEnd: { type: Sequelize.DATE, field: "auctionEnd" },
         minPrice: { type: Sequelize.INTEGER, field: "minPrice", default: 0 },

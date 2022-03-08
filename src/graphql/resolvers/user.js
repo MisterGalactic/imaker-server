@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const pubsub = require('@/graphql/utils/PubSub')
 
 const createToken = require('@/graphql/utils/createToken')
 
@@ -60,6 +61,20 @@ exports.update_user = async (_, { user }, { models, me }) => {
     const newPassword = await bcrypt.hash(userDB.password, 10)
     await userDB.update({ ...user, newPassword })
     await userDB.reload()
+    return userDB
+  } catch (err) {
+    return err
+  }
+}
+
+exports.buy_credit = async (_, { UserId, credit }, { models, me }) => {
+  try {
+    const userDB = await models.User.findOne({ where: { id: UserId } })
+    if (!userDB) throw new Error('No user found. If this is unexpected, try to log out and log in again.')
+
+    userDB.credit = userDB.credit + credit
+    await userDB.save()
+
     return userDB
   } catch (err) {
     return err

@@ -24,6 +24,7 @@
     "graphql": "^16.0.1",
     "graphql-resolvers": "^0.4.2",
     "graphql-subscriptions": "^2.0.0",
+    "graphql-type-json": "^0.3.2",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "nodemon": "^2.0.15",

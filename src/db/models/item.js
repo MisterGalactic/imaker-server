@@ -42,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
     picUrl3: {
       type: DataTypes.TEXT
     },
+    history: {
+      type: DataTypes.JSON
+    },
     auctionStart: {
       type: DataTypes.DATE
     },
