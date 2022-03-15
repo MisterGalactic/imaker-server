@@ -302,6 +302,57 @@
             },
             "indexes": []
         },
+        "Records": {
+            "tableName": "Records",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "field": "id",
+                    "seqType": "Sequelize.UUID"
+                },
+                "UserId": {
+                    "allowNull": false,
+                    "field": "UserId",
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.UUID"
+                },
+                "ItemId": {
+                    "allowNull": false,
+                    "field": "ItemId",
+                    "references": {
+                        "model": "Items",
+                        "key": "id"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.UUID"
+                },
+                "history": {
+                    "field": "history",
+                    "seqType": "Sequelize.JSON"
+                },
+                "status": {
+                    "field": "status",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "Users": {
             "tableName": "Users",
             "schema": {
@@ -352,8 +403,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/javadoge/centralWin/imaker-server0-0-5/src/db/states/_current.json",
-    "backupPath": "/Users/javadoge/centralWin/imaker-server0-0-5/src/db/states/_current_bak.json",
+    "path": "/Users/javadoge/centralWin/imaker-server0-0-6/src/db/states/_current.json",
+    "backupPath": "/Users/javadoge/centralWin/imaker-server0-0-6/src/db/states/_current_bak.json",
     "exists": false,
     "revision": 1
 }

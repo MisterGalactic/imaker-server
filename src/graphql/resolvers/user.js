@@ -54,8 +54,9 @@ exports.sign_in = async (_, { email, password }, { models, secret }) => {
 }
 
 exports.update_user = async (_, { user }, { models, me }) => {
+  console.log(user)
   try {
-    const userDB = await models.users.findOne({ where: { id: me.id } })
+    const userDB = await models.User.findOne({ where: { id: user.id } })
     if (!userDB) throw new Error('No user found. If this is unexpected, try to log out and log in again.')
 
     const newPassword = await bcrypt.hash(userDB.password, 10)

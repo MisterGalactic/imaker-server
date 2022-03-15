@@ -126,6 +126,8 @@ const users = [...Array(numItems)].map(() => ({
 // const history = `[{"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(25, 50)}"}, {"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(50, 100)}"}, {"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(100, 200)}"}]`
 const history = `[]`
 
+const recordHistory = `[{"time":"${new Date()}","amount":"${faker.commerce.price(25, 50)}"}, {"time":"${new Date()}","amount":"${faker.commerce.price(50, 100)}"}, {"time":"${new Date()}","amount":"${faker.commerce.price(100, 200)}"}]`
+
 const testUser1 = [...Array(1)].map(() => ({
   id: faker.random.uuid(),
   email: '1',
@@ -304,7 +306,6 @@ const carPosts = [...Array(numCarItems)].map(() => ({
 
 
 
-
 const featuredItems = [...Array(numFeaturedItems)].map(() => ({
   id: faker.random.uuid(),
   name: `${getRandomInt(1990,2022)} ${faker.vehicle.model()} ${getRandomInt(29,44)}mm`,
@@ -464,6 +465,16 @@ const addresses = [...Array(numItems)].map((address, index) => ({
   updatedAt: new Date()
 }))
 
+const records = [...Array(numItems)].map(() => ({
+  id: faker.random.uuid(),
+  UserId: users[randNumb(numItems)].id,
+  ItemId: featuredItems[randNumb(numFeaturedItems)].id,
+  history: recordHistory,
+  status: '',
+  createdAt: new Date(),
+  updatedAt: new Date()
+}))
+
 module.exports = {
   up: async (queryInterface) => Promise.all([
     await queryInterface.bulkInsert('Users', users, {}),
@@ -490,7 +501,9 @@ module.exports = {
     await queryInterface.bulkInsert('Items', realEstateItems, {}),
     await queryInterface.bulkInsert('Items', watchItems, {}),
     await queryInterface.bulkInsert('Items', carItems, {}),
-    await queryInterface.bulkInsert('Addresses', addresses, {})
+    await queryInterface.bulkInsert('Addresses', addresses, {}),
+
+    await queryInterface.bulkInsert('Records', records, {})
   ]),
   down: async (queryInterface) => Promise.all([
     await queryInterface.bulkDelete('Users', users, {}),
@@ -517,6 +530,8 @@ module.exports = {
     await queryInterface.bulkDelete('Items', realEstateItems, {}),
     await queryInterface.bulkDelete('Items', watchItems, {}),
     await queryInterface.bulkDelete('Items', carItems, {}),
-    await queryInterface.bulkDelete('Addresses', addresses, {})
+    await queryInterface.bulkDelete('Addresses', addresses, {}),
+
+    await queryInterface.bulkDelete('Records', records, {})
   ])
 }

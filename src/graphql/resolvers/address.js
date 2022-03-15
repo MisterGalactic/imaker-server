@@ -27,12 +27,13 @@ exports.create_address = async (_, { address }, { models, me }) => {
   }
 }
 
-exports.update_address = async (_, { AddressId, address }, { models }) => {
+exports.update_address = async (_, { address }, { models, me }) => {
+  console.log("adadfasdfasdfdasfasfdsafadsdfafsdafsadfsfasdfasdfasdfsadfdress")
   try {
-    const addressDB = await models.Address.findOne({ where: { id: AddressId } })
-    if (addressDB) throw new Error('Address Not Found')
+    const addressDB = await models.Address.findOne({ where: { id: address.id } })
+    if (!addressDB) throw new Error('Address Not Found')
 
-    await addressDB.update(address)
+    await addressDB.update({ ...address })
     await addressDB.reload()
     return addressDB
   } catch (err) {

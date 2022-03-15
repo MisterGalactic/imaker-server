@@ -15,6 +15,7 @@ module.exports = `
     city: String!
     postcode: String!
     country: String!
+    id: String
   }
 
   extend type Query {
@@ -22,13 +23,7 @@ module.exports = `
   }
 
   extend type Mutation {
-    create_address(
-      address: AddressUpdate!
-    ): Address
-
-    update_address(
-      AddressId: ID!
-      address: AddressUpdate!
-    ): Address!
+    create_address(address: AddressUpdate!): Address
+    update_address(address: AddressUpdate!): Address!
   }
 `

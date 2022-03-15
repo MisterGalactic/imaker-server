@@ -3,6 +3,7 @@ const { combineResolvers } = require('graphql-resolvers')
 const { isAuthenticated, isItemOwner, isAddressOwner, isPostOwner } = require('@/graphql/resolvers/authorization')
 const user = require('@/graphql/resolvers/user')
 const item = require('@/graphql/resolvers/item')
+const record = require('@/graphql/resolvers/record')
 const category = require('@/graphql/resolvers/category')
 const post = require('@/graphql/resolvers/post')
 const postcategory = require('@/graphql/resolvers/postcategory')
@@ -19,6 +20,8 @@ const resolvers = {
     get_item_by_Id: item.get_item_by_Id,
     won_item_list: combineResolvers(isAuthenticated, item.won_item_list),
 
+    get_records: record.get_records,
+
     get_posts: post.get_posts,
     get_post_by_Id: post.get_post_by_Id,
     won_post_list: combineResolvers(isAuthenticated, post.won_post_list),
@@ -34,6 +37,9 @@ const resolvers = {
   Item: {
     user: item.get_user_by_item,
     category: item.get_category_by_Item
+  },
+  Record: {
+    user: record.get_user_by_record
   },
   PostCategory: {
     post: postcategory.get_posts_by_postcategory
@@ -54,6 +60,9 @@ const resolvers = {
     update_item: combineResolvers(isAuthenticated, isItemOwner, item.update_item),
     delete_item_by_id: combineResolvers(isAuthenticated, isItemOwner, item.delete_item_by_id),
     place_a_bid: combineResolvers(isAuthenticated, item.place_a_bid),
+
+    create_record: combineResolvers(isAuthenticated, record.create_record),
+    update_record: combineResolvers(isAuthenticated, record.update_record),
 
     create_post: combineResolvers(isAuthenticated, post.create_post),
     update_post: combineResolvers(isAuthenticated, isPostOwner, post.update_post),

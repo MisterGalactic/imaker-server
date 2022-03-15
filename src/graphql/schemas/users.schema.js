@@ -23,6 +23,7 @@ module.exports = `
     password: String!
     email: String!
     phoneNumber: String
+    id: String
   }
 
   extend type Query {

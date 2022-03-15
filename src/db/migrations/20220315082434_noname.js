@@ -9,13 +9,14 @@ const Sequelize = require("sequelize");
  * createTable() => "Addresses", deps: [Users]
  * createTable() => "Items", deps: [Users, Categories]
  * createTable() => "Posts", deps: [Users, PostCategories]
+ * createTable() => "Records", deps: [Users, Items]
  *
  */
 
 const info = {
   revision: 1,
   name: "noname",
-  created: "2022-03-08T06:27:29.497Z",
+  created: "2022-03-15T08:24:34.500Z",
   comment: "",
 };
 
@@ -235,6 +236,44 @@ const migrationCommands = (transaction) => [
       { transaction },
     ],
   },
+  {
+    fn: "createTable",
+    params: [
+      "Records",
+      {
+        id: { type: Sequelize.UUID, field: "id", primaryKey: true },
+        UserId: {
+          type: Sequelize.UUID,
+          onUpdate: "CASCADE",
+          onDelete: "NO ACTION",
+          references: { model: "Users", key: "id" },
+          field: "UserId",
+          allowNull: false,
+        },
+        ItemId: {
+          type: Sequelize.UUID,
+          onUpdate: "CASCADE",
+          onDelete: "NO ACTION",
+          references: { model: "Items", key: "id" },
+          field: "ItemId",
+          allowNull: false,
+        },
+        history: { type: Sequelize.JSON, field: "history" },
+        status: { type: Sequelize.STRING, field: "status" },
+        createdAt: {
+          type: Sequelize.DATE,
+          field: "createdAt",
+          allowNull: false,
+        },
+        updatedAt: {
+          type: Sequelize.DATE,
+          field: "updatedAt",
+          allowNull: false,
+        },
+      },
+      { transaction },
+    ],
+  },
 ];
 
 const rollbackCommands = (transaction) => [
@@ -257,6 +296,10 @@ const rollbackCommands = (transaction) => [
   {
     fn: "dropTable",
     params: ["Posts", { transaction }],
+  },
+  {
+    fn: "dropTable",
+    params: ["Records", { transaction }],
   },
   {
     fn: "dropTable",
