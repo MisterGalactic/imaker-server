@@ -33,6 +33,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     status: {
       type: DataTypes.STRING
+    },
+    auctionEnd: {
+      type: DataTypes.DATE
+    },
+    auctionStart: {
+      type: DataTypes.DATE
     }
   }, {
     hooks: {

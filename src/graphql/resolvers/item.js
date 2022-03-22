@@ -2,9 +2,24 @@ const { Op } = require('sequelize')
 const pubsub = require('@/graphql/utils/PubSub')
 
 // Queries
+
+// exports.get_item_by_Id = async (_, { id }, { models }) => {
+//   console.log('get_item_by_Id')
+//   const item = await models.Item.findByPk(id)
+//   console.log("console logging get_item_by_Id", await models.Item.findByPk(id))
+//   return item
+// }
+
 exports.get_item_by_Id = async (_, { id }, { models }) => {
-  const item = await models.Item.findByPk(id)
-  return item
+  // console.log(`get_item_by_Id with id: ${id}`)
+  try {
+    const item = await models.Item.findOne({ where: { id: id } })
+    if (!item) throw new Error('No item found. If this is unexpected, try to log out and log in again.')
+    // console.log("console logging get_item_by_Id", await models.Item.findByPk(id))
+    return item
+  } catch (err) {
+    return err
+  }
 }
 
 exports.get_items = async (_, __, { models }) => {
@@ -38,13 +53,15 @@ exports.get_category_by_Item = async (item, _, { models }) => {
 
 // Mutations
 exports.create_item = async (_, { item }, { models, me }) => {
+  console.log("creating_item", item)
   try {
     const createdItem = await models.Item.create({
       ...item,
       minimumBid: item.minPrice + 1,
       auctionStart: Date.parse(item.auctionStart),
       auctionEnd: Date.parse(item.auctionEnd),
-      UserId: me.id
+      UserId: me.id,
+      history: `[]`
     })
 
     return createdItem
@@ -87,7 +104,7 @@ exports.place_a_bid = async (_, { ItemId, biddingPrice, lastName, history }, { m
     itemDB.minimumBid = biddingPrice
     itemDB.bidder = me.id
     // itemDB.history = history
-    itemDB.history = [...itemDB.history,{'name':`${lastName}`,'amount':`${biddingPrice}`}]
+    itemDB.history = [...itemDB.history,{'id':`${me.id}`,'name':`${lastName}`,'amount':`${biddingPrice}`, 'time':`${Date.now()}`}]
     await itemDB.save()
 
     pubsub.publish('bidPlaced', { bidPlaced: itemDB })

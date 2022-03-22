@@ -340,6 +340,14 @@
                     "field": "status",
                     "seqType": "Sequelize.STRING"
                 },
+                "auctionEnd": {
+                    "field": "auctionEnd",
+                    "seqType": "Sequelize.DATE"
+                },
+                "auctionStart": {
+                    "field": "auctionStart",
+                    "seqType": "Sequelize.DATE"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -403,8 +411,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/javadoge/centralWin/imaker-server0-0-6/src/db/states/_current.json",
-    "backupPath": "/Users/javadoge/centralWin/imaker-server0-0-6/src/db/states/_current_bak.json",
+    "path": "/Users/javadoge/centralWin/imaker-server0-0-9/src/db/states/_current.json",
+    "backupPath": "/Users/javadoge/centralWin/imaker-server0-0-9/src/db/states/_current_bak.json",
     "exists": false,
     "revision": 1
 }

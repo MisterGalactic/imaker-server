@@ -27,14 +27,36 @@ exports.get_user_by_record = async (record, _, { models }) => {
 // }
 
 // Mutations
-exports.create_record = async (_, { ItemId, biddingPrice, record }, { models, me }) => {
+// exports.create_record = async (_, { ItemId, biddingPrice, record }, { models, me }) => {
+//   console.log("ffsadfdsafdsfsadfsfsdfdfadsfasdfsafdsd")
+//   try {
+//     const createdRecord = await models.Record.create({
+//       ...record,
+//       UserId: me.id,
+//       ItemId: ItemId,
+//       history: [{'time':`${Date.now()}`,'amount':`${biddingPrice}`}],
+//       status: ''
+//     })
+
+//     return createdRecord
+//   } catch (err) {
+//     return err
+//   }
+// }
+
+exports.create_record = async (_, { UserId, ItemId, biddingPrice, auctionEnd, auctionStart, record }, { models, me }) => {
+  console.log("creating record", record)
+  console.log("auctionEnd", auctionEnd)
+  console.log("auctionStart", auctionStart)
   try {
     const createdRecord = await models.Record.create({
       ...record,
-      UserId: me.id,
+      UserId: UserId,
       ItemId: ItemId,
       history: [{'time':`${Date.now()}`,'amount':`${biddingPrice}`}],
-      status: ''
+      status: '',
+      auctionEnd: Date(parseInt(auctionEnd)),
+      auctionStart: Date(parseInt(auctionStart))
     })
 
     return createdRecord
@@ -43,19 +65,24 @@ exports.create_record = async (_, { ItemId, biddingPrice, record }, { models, me
   }
 }
 
-exports.update_record = async (_, { ItemId, biddingPrice }, { models, me }) => {
+
+exports.update_record = async (_, { UserId, ItemId, biddingPrice, record }, { models, me }) => {
+  console.log("updating record", record)
   try {
     const recordDB = await models.Record.findOne({
       where: {
-        ItemId: ItemId,
-        UserId: me.id
+        UserId: UserId,
+        ItemId: ItemId
       }
     })
-
     if (!recordDB) throw new Error('No record found')
 
     recordDB.history = [...recordDB.history,{'time':`${Date.now()}`,'amount':`${biddingPrice}`}]
+
     await recordDB.save()
+
+    // await recordDB.update(record)
+    // await recordDB.reload()
     return recordDB
   } catch (err) {
     return err

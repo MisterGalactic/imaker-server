@@ -50,6 +50,7 @@ const resolvers = {
   },
   User: {
     item: user.get_items_by_user,
+    record: user.get_record_by_user,
     address: user.get_address_by_user
   },
   Mutation: {
@@ -61,8 +62,10 @@ const resolvers = {
     delete_item_by_id: combineResolvers(isAuthenticated, isItemOwner, item.delete_item_by_id),
     place_a_bid: combineResolvers(isAuthenticated, item.place_a_bid),
 
-    create_record: combineResolvers(isAuthenticated, record.create_record),
-    update_record: combineResolvers(isAuthenticated, record.update_record),
+    // create_record: combineResolvers(isAuthenticated, record.create_record),
+    create_record: record.create_record,
+    // update_record: combineResolvers(isAuthenticated, record.update_record),
+    update_record: record.update_record,
 
     create_post: combineResolvers(isAuthenticated, post.create_post),
     update_post: combineResolvers(isAuthenticated, isPostOwner, post.update_post),

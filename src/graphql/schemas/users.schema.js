@@ -10,6 +10,7 @@ module.exports = `
     email: String!
     phoneNumber: String
     item: [Item!]
+    record: [Record]
     address: Address
   }
 

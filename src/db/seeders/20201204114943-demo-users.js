@@ -7,7 +7,7 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (maxx - minn + 1)) + minn
 }
 
-const numFeaturedItems = getRandomInt(3,7)
+const numFeaturedItems = getRandomInt(11,23)
 const numCoinItems = getRandomInt(2,4)
 const numArtItems = getRandomInt(3,11)
 const numBrandItems = getRandomInt(3,11)
@@ -126,10 +126,11 @@ const users = [...Array(numItems)].map(() => ({
 // const history = `[{"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(25, 50)}"}, {"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(50, 100)}"}, {"name":"${users[randNumb(numItems)].firstName}","amount":"${faker.commerce.price(100, 200)}"}]`
 const history = `[]`
 
-const recordHistory = `[{"time":"${new Date()}","amount":"${faker.commerce.price(25, 50)}"}, {"time":"${new Date()}","amount":"${faker.commerce.price(50, 100)}"}, {"time":"${new Date()}","amount":"${faker.commerce.price(100, 200)}"}]`
+const recordHistory = `[{"time":"${new Date().toLocaleString()}","amount":"${faker.commerce.price(25, 50)}"}, {"time":"${new Date().toLocaleString()}","amount":"${faker.commerce.price(50, 100)}"}, {"time":"${new Date().toLocaleString()}","amount":"${faker.commerce.price(100, 200)}"}]`
 
 const testUser1 = [...Array(1)].map(() => ({
-  id: faker.random.uuid(),
+  // id: faker.random.uuid(),
+  id: '1ae2aef1-335a-43c8-b929-5e12f285603f',
   email: '1',
   password,
   credit: parseInt(faker.commerce.price(), 10),
@@ -465,9 +466,10 @@ const addresses = [...Array(numItems)].map((address, index) => ({
   updatedAt: new Date()
 }))
 
-const records = [...Array(numItems)].map(() => ({
+const records = [...Array(numFeaturedItems)].map(() => ({
   id: faker.random.uuid(),
-  UserId: users[randNumb(numItems)].id,
+  // UserId: users[randNumb(numItems)].id,
+  UserId: '1ae2aef1-335a-43c8-b929-5e12f285603f',
   ItemId: featuredItems[randNumb(numFeaturedItems)].id,
   history: recordHistory,
   status: '',

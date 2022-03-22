@@ -28,6 +28,7 @@ module.exports.isPostOwner = async (_, { PostId }, { models, me }) => {
 }
 
 module.exports.isAddressOwner = async (_, { AddressId }, { models, me }) => {
+  console.log("isaddressowner addressID", AddressId)
   try {
     const address = await models.Address.findByPk(AddressId, { raw: true })
     if (!address) throw new Error('Couldn\'t find address')

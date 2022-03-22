@@ -6,12 +6,18 @@ module.exports = `
   type Record {
     id: String!
     user: User!
-    item: Item
+    item: Item!
+    UserId: String
+    ItemId: String
     history: JSON
     status: String
+    auctionEnd: String
+    auctionStart: String
   }
 
   input RecordUpdate {
+    UserId: String
+    ItemId: String
     history: JSON
     status: String
   }
@@ -21,7 +27,7 @@ module.exports = `
   }
 
   extend type Mutation {
-    create_record(ItemId: ID!, biddingPrice: Int, record: RecordUpdate!): Record!
-    update_record(ItemId: ID!, biddingPrice: Int, record: RecordUpdate!): Record!
+    create_record(UserId: ID!, ItemId: ID!, biddingPrice: Int, auctionEnd: String, auctionStart: String, record: RecordUpdate!): Record!
+    update_record(UserId: ID!, ItemId: ID!, biddingPrice: Int, record: RecordUpdate!): Record!
   }
 `

@@ -18,7 +18,14 @@ exports.get_user_info = async (_, __, { models, me }) => {
 // Association Queries
 exports.get_items_by_user = async (user, _, { models }) => {
   const items = await models.Item.findAll({ where: { UserId: user.id } })
+  console.log(await models.Item.findAll({ where: { UserId: user.id } }))
   return items
+}
+
+exports.get_record_by_user = async (user, _, { models }) => {
+  const record = await models.Record.findAll({ where: { UserId: user.id } })
+  // console.log(await models.Record.findAll({ where: { UserId: user.id } }))
+  return record
 }
 
 exports.get_address_by_user = async (user, _, { models }) => {
